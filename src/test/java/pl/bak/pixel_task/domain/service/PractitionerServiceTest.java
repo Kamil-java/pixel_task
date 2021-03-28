@@ -7,18 +7,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.bak.pixel_task.domain.dao.PractitionerRepository;
 import pl.bak.pixel_task.model.Practitioner;
-import pl.bak.pixel_task.model.Visit;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static test.util.ObjectsToTests.preparePractitioner;
-import static test.util.ObjectsToTests.prepareVisit;
 
 @ExtendWith(MockitoExtension.class)
 class PractitionerServiceTest {

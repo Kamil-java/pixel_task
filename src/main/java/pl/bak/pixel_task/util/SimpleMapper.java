@@ -46,8 +46,8 @@ public class SimpleMapper {
         return visitDTOS;
     }
 
-    public ResultDTO mapObjectToResultDto(Patient patientDTO, long count) {
-        ResultDTO map = modelMapper.map(patientDTO, ResultDTO.class);
+    public ResultDTO mapObjectToResultDto(Patient patient, long count) {
+        ResultDTO map = modelMapper.map(patient, ResultDTO.class);
         map.setCountVisits(count);
 
         return map;
