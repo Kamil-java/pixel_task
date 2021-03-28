@@ -7,9 +7,7 @@ import pl.bak.pixel_task.domain.service.VisitService;
 import pl.bak.pixel_task.dto.PatientDTO;
 import pl.bak.pixel_task.dto.PractitionerDTO;
 import pl.bak.pixel_task.dto.VisitDTO;
-import pl.bak.pixel_task.model.Patient;
-import pl.bak.pixel_task.model.Practitioner;
-import pl.bak.pixel_task.model.Visit;
+import pl.bak.pixel_task.model.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -48,7 +46,6 @@ public class SaveData {
                 .stream()
                 .map(simpleMapper::mapDtoToVisit)
                 .collect(Collectors.toList());
-
 
         patientService.savePatients(listOfPatient);
         practitionerService.savePractitioners(listOfPractitioners);

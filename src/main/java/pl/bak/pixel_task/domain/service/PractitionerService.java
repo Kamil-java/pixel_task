@@ -6,6 +6,7 @@ import pl.bak.pixel_task.model.Practitioner;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PractitionerService {
@@ -28,5 +29,16 @@ public class PractitionerService {
             return practitionerRepository.findAllBySpecializationIn(specializations);
         }
         return practitionerRepository.findAll();
+    }
+
+    public Optional<String> specializationUnknownSearch(List<String> specializations) {
+        return specializations
+                .stream()
+                .filter(this::specializationDoesntExist)
+                .findFirst();
+    }
+
+    public boolean specializationDoesntExist(String specialization) {
+        return !practitionerRepository.existsBySpecialization(specialization);
     }
 }

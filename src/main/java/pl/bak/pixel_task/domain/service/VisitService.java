@@ -2,7 +2,6 @@ package pl.bak.pixel_task.domain.service;
 
 import org.springframework.stereotype.Service;
 import pl.bak.pixel_task.domain.dao.VisitRepository;
-import pl.bak.pixel_task.dto.ResultDTO;
 import pl.bak.pixel_task.dto.SpecializationResultDTO;
 import pl.bak.pixel_task.dto.VisitDTO;
 import pl.bak.pixel_task.model.Patient;
@@ -13,6 +12,7 @@ import pl.bak.pixel_task.util.SimpleMapper;
 import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VisitService {
@@ -31,11 +31,14 @@ public class VisitService {
         visitRepository.saveAll(visits);
     }
 
-    public SpecializationResultDTO getNumberOfVisitForSpecialization(String specialization) {
+    public Optional<SpecializationResultDTO> getNumberOfVisitForSpecialization(String specialization) {
+        if (practitionerService.specializationDoesntExist(specialization)){
+             return Optional.empty();
+        }
         List<Practitioner> practitioners = practitionerService.practitioners(Collections.singletonList(specialization));
         long numberOfVisits = visitRepository.countVisitByPractitionerId(practitioners.get(0));
 
-        return new SpecializationResultDTO(specialization, numberOfVisits);
+        return Optional.of(new SpecializationResultDTO(specialization, numberOfVisits));
     }
 
     protected List<VisitDTO> visitList(List<Practitioner> practitionerId, List<Patient> patientId) {

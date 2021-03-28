@@ -1,6 +1,8 @@
 package pl.bak.pixel_task.domain.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import pl.bak.pixel_task.domain.dao.PatientRepository;
 import pl.bak.pixel_task.dto.ResultDTO;
 import pl.bak.pixel_task.dto.VisitDTO;
@@ -70,6 +72,17 @@ public class PatientService {
         }
 
         return resultDTOS;
+    }
+
+    public Optional<String> cityUnknownSearch(List<String> cities){
+        return cities
+                .stream()
+                .filter(city -> !cityExist(city))
+                .findFirst();
+    }
+
+    private boolean cityExist(String city){
+        return patientRepository.existsByCity(city);
     }
 
 }

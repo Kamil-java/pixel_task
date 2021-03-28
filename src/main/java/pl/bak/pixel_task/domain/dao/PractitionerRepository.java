@@ -12,4 +12,6 @@ import java.util.List;
 public interface PractitionerRepository extends JpaRepository<Practitioner, Long> {
 
     List<Practitioner> findAllBySpecializationIn(List<String> specializations);
+
+    boolean existsBySpecialization(String specializations);
 }

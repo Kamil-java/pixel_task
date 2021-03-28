@@ -2,10 +2,7 @@ package pl.bak.pixel_task.util;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import pl.bak.pixel_task.dto.PatientDTO;
-import pl.bak.pixel_task.dto.PractitionerDTO;
-import pl.bak.pixel_task.dto.ResultDTO;
-import pl.bak.pixel_task.dto.VisitDTO;
+import pl.bak.pixel_task.dto.*;
 import pl.bak.pixel_task.model.Patient;
 import pl.bak.pixel_task.model.Practitioner;
 import pl.bak.pixel_task.model.Visit;

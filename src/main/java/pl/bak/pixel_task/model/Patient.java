@@ -1,10 +1,13 @@
 package pl.bak.pixel_task.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
+import org.hibernate.annotations.Cache;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "Patient")
 @Table(
@@ -44,6 +47,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patientId")
     private Set<Visit> visit = new HashSet<>();
+
+    @ManyToMany
+    private List<Practitioner> practitioners = new ArrayList<>();
 
     public Long getPatientId() {
         return patientId;
@@ -93,6 +99,14 @@ public class Patient {
         this.visit = visit;
     }
 
+    public List<Practitioner> getPractitioners() {
+        return practitioners;
+    }
+
+    public void setPractitioners(List<Practitioner> practitioners) {
+        this.practitioners = practitioners;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,3 +120,4 @@ public class Patient {
         return Objects.hash(patientId, firstName, lastName, city, createdAt, visit);
     }
 }
+

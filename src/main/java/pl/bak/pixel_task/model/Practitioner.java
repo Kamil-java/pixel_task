@@ -1,9 +1,7 @@
 package pl.bak.pixel_task.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "Practitioner")
 @Table(
@@ -25,6 +23,9 @@ public class Practitioner {
 
     @OneToMany(mappedBy = "practitionerId")
     private Set<Visit> visit = new HashSet<>();
+
+    @ManyToMany(mappedBy = "practitioners")
+    private List<Patient> patients = new ArrayList<>();
 
     public Long getPractitionerId() {
         return practitionerId;
@@ -48,6 +49,14 @@ public class Practitioner {
 
     public void setVisit(Set<Visit> visit) {
         this.visit = visit;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 
     @Override
