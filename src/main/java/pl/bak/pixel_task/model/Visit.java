@@ -43,5 +43,4 @@ public class Visit {
     public void setPatientId(Patient patientId) {
         this.patientId = patientId;
     }
-
 }

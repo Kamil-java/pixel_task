@@ -17,4 +17,8 @@ public class PractitionerService {
     public void savePractitioners(List<Practitioner> practitioners){
         practitionerRepository.saveAll(practitioners);
     }
+
+    public List<Practitioner> practitioners(List<String> specializations){
+        return practitionerRepository.findAllBySpecializationIn(specializations);
+    }
 }

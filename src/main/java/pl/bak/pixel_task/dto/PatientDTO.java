@@ -66,14 +66,4 @@ public class PatientDTO {
         this.createdAt = createdAt;
     }
 
-    @Override
-    public String toString() {
-        return "PatientDTO{" +
-                "patientId=" + patientId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", city='" + city + '\'' +
-                ", createdAt=" + createdAt +
-                '}';
-    }
 }

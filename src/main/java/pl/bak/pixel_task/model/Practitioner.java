@@ -48,6 +48,4 @@ public class Practitioner {
     public void setVisit(Set<Visit> visit) {
         this.visit = visit;
     }
-
-
 }
