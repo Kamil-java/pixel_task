@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/visit/number?specialization=Cardiology' \
+    'Content-Type:application/json;charset=UTF-8'
+----

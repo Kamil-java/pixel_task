@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+[{"firstName":"Adam","lastName":"Kowal","countVisits":3},{"firstName":"Jan","lastName":"Nowak","countVisits":7}]
+----

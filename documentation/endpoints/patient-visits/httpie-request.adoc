@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/patient/visit?cities=%C5%81%C3%B3d%C5%BA&cities=Kutno&specialities=Pediatrics' \
+    'Content-Type:application/json;charset=UTF-8'
+----
