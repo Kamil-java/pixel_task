@@ -42,7 +42,7 @@ class VisitServiceTest {
     }
 
     @Test
-    void saveVisits() {
+    void shouldSaveVisits() {
         //given
         Visit prepareVisit = prepareVisit();
         List<Visit> visits = Collections.singletonList(prepareVisit);
