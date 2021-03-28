@@ -35,7 +35,7 @@ public class VisitService {
         if (practitionerService.specializationDoesntExist(specialization)){
              return Optional.empty();
         }
-        List<Practitioner> practitioners = practitionerService.practitioners(Collections.singletonList(specialization));
+        List<Practitioner> practitioners = practitionerService.getListOfPracitionerIfParamIsEmptyOrEqualsAll(Collections.singletonList(specialization));
         long numberOfVisits = visitRepository.countVisitByPractitionerId(practitioners.get(0));
 
         return Optional.of(new SpecializationResultDTO(specialization, numberOfVisits));

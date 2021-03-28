@@ -15,7 +15,6 @@ import pl.bak.pixel_task.dto.ResultDTO;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;

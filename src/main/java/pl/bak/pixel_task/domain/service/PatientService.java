@@ -1,8 +1,6 @@
 package pl.bak.pixel_task.domain.service;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import pl.bak.pixel_task.domain.dao.PatientRepository;
 import pl.bak.pixel_task.dto.ResultDTO;
 import pl.bak.pixel_task.dto.VisitDTO;
@@ -34,7 +32,7 @@ public class PatientService {
 
     public List<ResultDTO> getAllResults(List<String> cities, List<String> specializations) {
         List<VisitDTO> visitDTOS = visitService.visitList(
-                practitionerService.practitioners(specializations),
+                practitionerService.getListOfPracitionerIfParamIsEmptyOrEqualsAll(specializations),
                 getAllPatients(cities));
 
         return converter(visitDTOS, getAllPatients(cities));

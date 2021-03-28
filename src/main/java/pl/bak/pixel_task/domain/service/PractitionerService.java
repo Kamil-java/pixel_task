@@ -21,7 +21,7 @@ public class PractitionerService {
         practitionerRepository.saveAll(practitioners);
     }
 
-    public List<Practitioner> practitioners(List<String> specializations) {
+    public List<Practitioner> getListOfPracitionerIfParamIsEmptyOrEqualsAll(List<String> specializations) {
         if (!specializations.isEmpty()) {
             if (specializations.size() == 1 && specializations.get(0).equals("ALL")) {
                 return practitionerRepository.findAll();
