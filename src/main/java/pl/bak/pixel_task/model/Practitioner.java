@@ -2,6 +2,7 @@ package pl.bak.pixel_task.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "Practitioner")
@@ -47,5 +48,18 @@ public class Practitioner {
 
     public void setVisit(Set<Visit> visit) {
         this.visit = visit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Practitioner that = (Practitioner) o;
+        return Objects.equals(practitionerId, that.practitionerId) && Objects.equals(specialization, that.specialization) && Objects.equals(visit, that.visit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(practitionerId, specialization, visit);
     }
 }

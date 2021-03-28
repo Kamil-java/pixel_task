@@ -5,9 +5,6 @@ public class ResultDTO {
     private String lastName;
     private long countVisits;
 
-    public ResultDTO() {
-    }
-
     public String getFirstName() {
         return firstName;
     }

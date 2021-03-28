@@ -1,9 +1,6 @@
 package pl.bak.pixel_task.dto;
 
 import com.opencsv.bean.CsvBindByPosition;
-import pl.bak.pixel_task.model.Visit;
-
-import java.util.Set;
 
 public class PractitionerDTO {
 

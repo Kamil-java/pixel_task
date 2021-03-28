@@ -1,12 +1,10 @@
 package pl.bak.pixel_task.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.opencsv.bean.CsvBindByPosition;
 
 public class PatientDTO {
 
     @CsvBindByPosition(position = 0)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String patientId;
 
     @CsvBindByPosition(position = 1)
@@ -16,11 +14,9 @@ public class PatientDTO {
     private String lastName;
 
     @CsvBindByPosition(position = 3)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String city;
 
     @CsvBindByPosition(position = 4)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String createdAt;
 
     public PatientDTO() {

@@ -1,10 +1,11 @@
 package pl.bak.pixel_task.model;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity(name = "Visit")
-@Table
+@Table(
+        name = "visit"
+)
 public class Visit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

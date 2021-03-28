@@ -1,9 +1,5 @@
 package pl.bak.pixel_task.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -97,4 +93,16 @@ public class Patient {
         this.visit = visit;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return Objects.equals(patientId, patient.patientId) && Objects.equals(firstName, patient.firstName) && Objects.equals(lastName, patient.lastName) && Objects.equals(city, patient.city) && Objects.equals(createdAt, patient.createdAt) && Objects.equals(visit, patient.visit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(patientId, firstName, lastName, city, createdAt, visit);
+    }
 }
