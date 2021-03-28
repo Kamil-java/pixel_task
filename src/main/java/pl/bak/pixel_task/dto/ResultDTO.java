@@ -8,12 +8,6 @@ public class ResultDTO {
     public ResultDTO() {
     }
 
-    public ResultDTO(String firstName, String lastName, long countVisits) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.countVisits = countVisits;
-    }
-
     public String getFirstName() {
         return firstName;
     }

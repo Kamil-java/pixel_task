@@ -16,4 +16,6 @@ public interface VisitRepository extends JpaRepository<Visit, Long> {
     List<Visit> findDistinctByPractitionerIdInAndPatientIdIn(List<Practitioner> practitionerId, List<Patient> patientId);
 
     long countVisitByPatientId(Patient patientId);
+
+    long countVisitByPractitionerId(Practitioner practitionerId);
 }

@@ -2,13 +2,12 @@ package pl.bak.pixel_task.domain.service;
 
 import org.springframework.stereotype.Service;
 import pl.bak.pixel_task.domain.dao.PatientRepository;
-import pl.bak.pixel_task.dto.PatientDTO;
 import pl.bak.pixel_task.dto.ResultDTO;
 import pl.bak.pixel_task.dto.VisitDTO;
 import pl.bak.pixel_task.model.Patient;
-import pl.bak.pixel_task.model.Practitioner;
 import pl.bak.pixel_task.util.SimpleMapper;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -25,6 +24,7 @@ public class PatientService {
         this.simpleMapper = simpleMapper;
     }
 
+    @Transactional
     public void savePatients(List<Patient> patients) {
         patientRepository.saveAll(patients);
     }
@@ -38,26 +38,24 @@ public class PatientService {
         return converter(visitDTOS, getAllPatients(cities));
     }
 
-    private List<PatientDTO> getAllPatients(List<String> citiesNames) {
+    private List<Patient> getAllPatients(List<String> citiesNames) {
         if (!citiesNames.isEmpty()) {
             if (citiesNames.size() == 1 && citiesNames.get(0).equals("ALL")) {
-                return simpleMapper.mapListPatientToListDto(patientRepository.findAll());
+                return patientRepository.findAll();
             }
 
-            List<Patient> patients = patientRepository.findAllByCityIn(citiesNames);
-
-            return simpleMapper.mapListPatientToListDto(patients);
+            return patientRepository.findAllByCityIn(citiesNames);
         }
-        return simpleMapper.mapListPatientToListDto(patientRepository.findAll());
+        return patientRepository.findAll();
     }
 
-    private List<ResultDTO> converter(List<VisitDTO> visitDTOS, List<PatientDTO> patients) {
-        Set<PatientDTO> setOfPatient = new HashSet<>();
+    private List<ResultDTO> converter(List<VisitDTO> visitDTOS, List<Patient> patients) {
+        Set<Patient> setOfPatient = new HashSet<>();
 
         for (VisitDTO visitDTO : visitDTOS) {
-            Optional<PatientDTO> first = patients
+            Optional<Patient> first = patients
                     .stream()
-                    .filter(patient -> patient.getPatientId().equals(String.valueOf(visitDTO.getPatientId())))
+                    .filter(patient -> patient.getPatientId().equals(visitDTO.getPatientId()))
                     .findFirst();
 
             first.ifPresent(setOfPatient::add);
@@ -65,8 +63,8 @@ public class PatientService {
 
         List<ResultDTO> resultDTOS = new LinkedList<>();
 
-        for (PatientDTO patientDTO : setOfPatient) {
-            ResultDTO resultDTO = simpleMapper.mapObjectToResultDto(patientDTO, visitService.countVisitByPatientId(patientDTO));
+        for (Patient patient : setOfPatient) {
+            ResultDTO resultDTO = simpleMapper.mapObjectToResultDto(patient, visitService.countVisitByPatientId(patient));
 
             resultDTOS.add(resultDTO);
         }

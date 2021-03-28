@@ -30,28 +30,6 @@ public class SimpleMapper {
         return patient;
     }
 
-    public List<PatientDTO> mapListPatientToListDto(List<Patient> patients) {
-        List<PatientDTO> patientDTOS = new ArrayList<>();
-
-        patients
-                .forEach(patient -> {
-                    PatientDTO map = modelMapper.map(patient, PatientDTO.class);
-                    patientDTOS.add(map);
-                });
-        return patientDTOS;
-    }
-
-    public List<Patient> mapListPatientDtoToList(List<PatientDTO> patients) {
-        List<Patient> patientsList = new ArrayList<>();
-
-        patients
-                .forEach(patient -> {
-                    Patient map = modelMapper.map(patient, Patient.class);
-                    patientsList.add(map);
-                });
-        return patientsList;
-    }
-
     public Practitioner mapDtoToPractitioner(PractitionerDTO practitionerDTO) {
         return modelMapper.map(practitionerDTO, Practitioner.class);
     }
@@ -71,7 +49,7 @@ public class SimpleMapper {
         return visitDTOS;
     }
 
-    public ResultDTO mapObjectToResultDto(PatientDTO patientDTO, long count) {
+    public ResultDTO mapObjectToResultDto(Patient patientDTO, long count) {
         ResultDTO map = modelMapper.map(patientDTO, ResultDTO.class);
         map.setCountVisits(count);
 

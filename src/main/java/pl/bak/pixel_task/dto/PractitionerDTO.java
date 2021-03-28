@@ -13,11 +13,6 @@ public class PractitionerDTO {
     @CsvBindByPosition(position = 1)
     private String specialization;
 
-    private Set<Visit> visit;
-
-    public PractitionerDTO() {
-    }
-
     public String getPractitionerId() {
         return practitionerId;
     }
@@ -32,13 +27,5 @@ public class PractitionerDTO {
 
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
-    }
-
-    public Set<Visit> getVisit() {
-        return visit;
-    }
-
-    public void setVisit(Set<Visit> visit) {
-        this.visit = visit;
     }
 }

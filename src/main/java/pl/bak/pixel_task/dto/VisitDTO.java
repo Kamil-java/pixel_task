@@ -13,9 +13,6 @@ public class VisitDTO {
     @CsvBindByPosition(position = 2)
     private Long patientId;
 
-    public VisitDTO() {
-    }
-
     public Long getVisitId() {
         return visitId;
     }
